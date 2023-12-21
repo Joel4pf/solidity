@@ -31,6 +31,7 @@
 
 #include <libsolutil/Keccak256.h>
 #include <libsolutil/Numeric.h>
+#include <libsolutil/picosha2.h>
 
 #include <limits>
 
@@ -233,6 +234,8 @@ u256 EVMInstructionInterpreter::eval(
 		return m_state.chainid;
 	case Instruction::BASEFEE:
 		return m_state.basefee;
+	case Instruction::BLOBHASH:
+		return blobHash(arg[0]);
 	case Instruction::EXTCODESIZE:
 		return u256(keccak256(h256(arg[0]))) & 0xffffff;
 	case Instruction::EXTCODEHASH:
@@ -646,4 +649,18 @@ std::pair<bool, size_t> EVMInstructionInterpreter::isInputMemoryPtrModified(
 	}
 	else
 		return {false, 0};
+}
+
+h256 EVMInstructionInterpreter::blobHash(u256 const& _index)
+{
+	yulAssert(m_evmVersion.hasBlobhash());
+	if (_index < m_state.KZGCommitments.size())
+	{
+		h256 hashedCommitment = h256(picosha2::hash256(toBigEndian(m_state.KZGCommitments[size_t(_index)])));
+		yulAssert(m_state.KZGHashVersion.size == 1);
+		hashedCommitment[0] = *m_state.KZGHashVersion.data();
+		yulAssert(hashedCommitment.size == 32);
+		return hashedCommitment;
+	}
+	return util::FixedHash<32>{};
 }

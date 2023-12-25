@@ -136,6 +136,7 @@ EVMHost::EVMHost(langutil::EVMVersion _evmVersion, evmc::VM& _vm):
 	tx_context.chain_id = evmc::uint256be{1};
 	// The minimum value of basefee
 	tx_context.block_base_fee = evmc::bytes32{7};
+	tx_context.blob_base_fee = evmc::bytes32{7};
 
 	// Reserve space for recording calls.
 	if (!recorded_calls.capacity())

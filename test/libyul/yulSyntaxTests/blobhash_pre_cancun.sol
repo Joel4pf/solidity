@@ -1,0 +1,6 @@
+{
+    function blobhash() {}
+}
+// ====
+// EVMVersion: <=shanghai
+// ----

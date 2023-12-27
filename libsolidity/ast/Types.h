@@ -1286,6 +1286,7 @@ public:
 		ABIEncodeWithSignature,
 		ABIDecode,
 		GasLeft, ///< gasleft()
+		BlobHash, ///< BLOBHASH
 		MetaType, ///< type(...)
 		/// Refers to a function declaration without calling context
 		/// (i.e. when accessed directly via the name of the containing contract).

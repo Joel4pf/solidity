@@ -1460,6 +1460,12 @@ bool ExpressionCompiler::visit(FunctionCall const& _functionCall)
 		case FunctionType::Kind::GasLeft:
 			m_context << Instruction::GAS;
 			break;
+		case FunctionType::Kind::BlobHash:
+		{
+			acceptAndConvert(*arguments[0], *function.parameterTypes()[0], true);
+			m_context << Instruction::BLOBHASH;
+			break;
+		}
 		case FunctionType::Kind::MetaType:
 			// No code to generate.
 			break;

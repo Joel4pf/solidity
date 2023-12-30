@@ -1,7 +1,7 @@
 ### 0.8.24 (unreleased)
 
 Language Features:
-
+ * Introduce global ``blobhash`` for retrieving the versioned blob hash of a given block.
 
 Compiler Features:
  * EVM: Support for the EVM Version "Cancun".

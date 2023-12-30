@@ -752,8 +752,8 @@ This document does not want to be a full description of the Ethereum virtual mac
 Please refer to a different document if you are interested in the precise semantics.
 
 Opcodes marked with ``-`` do not return a result and all others return exactly one value.
-Opcodes marked with ``F``, ``H``, ``B``, ``C``, ``I``, ``L`` and ``P`` are present since Frontier,
-Homestead, Byzantium, Constantinople, Istanbul, London or Paris respectively.
+Opcodes marked with ``F``, ``H``, ``B``, ``C``, ``I``, ``L``, ``P`` and ``N`` are present since Frontier,
+Homestead, Byzantium, Constantinople, Istanbul, London, Paris or Cancun respectively.
 
 In the following, ``mem[a...b)`` signifies the bytes of memory starting at position ``a`` up to
 but not including position ``b`` and ``storage[p]`` signifies the storage contents at slot ``p``.
@@ -924,6 +924,8 @@ the ``dup`` and ``swap`` instructions as well as ``jump`` instructions, labels a
 | gasprice()              |     | F | gas price of the transaction                                    |
 +-------------------------+-----+---+-----------------------------------------------------------------+
 | blockhash(b)            |     | F | hash of block nr b - only for last 256 blocks excluding current |
++-------------------------+-----+---+-----------------------------------------------------------------+
+| blobhash(b)             |     | N | versioned blob hash of block nr b                               |
 +-------------------------+-----+---+-----------------------------------------------------------------+
 | coinbase()              |     | F | current mining beneficiary                                      |
 +-------------------------+-----+---+-----------------------------------------------------------------+

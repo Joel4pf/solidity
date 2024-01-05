@@ -231,7 +231,7 @@ static std::map<Instruction, InstructionInfo> const c_instructionInfo =
 	{ Instruction::CHAINID,		{ "CHAINID",		0, 0, 1, false, Tier::Base } },
 	{ Instruction::SELFBALANCE,	{ "SELFBALANCE",	0, 0, 1, false, Tier::Low } },
 	{ Instruction::BASEFEE,     { "BASEFEE",        0, 0, 1, false, Tier::Base } },
-	{ Instruction::BLOBBASEFEE,     { "BLOBBASEFEE",        0, 0, 1, false, Tier::Base } },
+	{ Instruction::BLOBBASEFEE, { "BLOBBASEFEE",    0, 0, 1, false, Tier::Base } },
 	{ Instruction::POP,			{ "POP",			0, 1, 0, false, Tier::Base } },
 	{ Instruction::MLOAD,		{ "MLOAD",			0, 1, 1, true, Tier::VeryLow } },
 	{ Instruction::MSTORE,		{ "MSTORE",			0, 2, 0, true, Tier::VeryLow } },

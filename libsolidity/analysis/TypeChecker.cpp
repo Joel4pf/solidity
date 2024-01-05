@@ -3411,9 +3411,9 @@ bool TypeChecker::visit(MemberAccess const& _memberAccess)
 				);
 			else if (memberName == "blobbasefee" && !m_evmVersion.hasBlobBaseFee())
 				m_errorReporter.typeError(
-						1006_error,
-						_memberAccess.location(),
-						"\"blobbasefee\" is not supported by the VM version."
+					1006_error,
+					_memberAccess.location(),
+					"\"blobbasefee\" is not supported by the VM version."
 				);
 			else if (memberName == "prevrandao" && !m_evmVersion.hasPrevRandao())
 				m_errorReporter.warning(

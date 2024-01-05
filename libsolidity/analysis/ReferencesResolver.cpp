@@ -404,7 +404,15 @@ void ReferencesResolver::operator()(yul::VariableDeclaration const& _varDecl)
 			SecondarySourceLocation ssl;
 			for (auto const* decl: declarations)
 				ssl.append("The shadowed declaration is here:", decl->location());
-			if (!ssl.infos.empty())
+			if (identifier.name.str() == "blobhash" && !m_evmVersion.hasBlobhash())
+				m_errorReporter.warning(
+					7527_error,
+					nativeLocationOf(identifier),
+					"\"blobhash\" was introduced as builtin function in EVM version Cancun "
+					"but you are currently using EVM version " + m_evmVersion.name() +
+					" and it will not behave as expected for EVM version >= Cancun."
+				);
+			else if (!ssl.infos.empty())
 				m_errorReporter.declarationError(
 					3859_error,
 					nativeLocationOf(identifier),

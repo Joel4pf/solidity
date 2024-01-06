@@ -16,7 +16,6 @@ contract C {
 }
 // ====
 // EVMVersion: <=shanghai
-// compileViaYul: also
 // ----
 // f() -> 1
 // g() -> 1000

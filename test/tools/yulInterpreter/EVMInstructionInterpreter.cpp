@@ -654,13 +654,12 @@ std::pair<bool, size_t> EVMInstructionInterpreter::isInputMemoryPtrModified(
 h256 EVMInstructionInterpreter::blobHash(u256 const& _index)
 {
 	yulAssert(m_evmVersion.hasBlobhash());
-	if (_index < m_state.KZGCommitments.size())
-	{
-		h256 hashedCommitment = h256(picosha2::hash256(toBigEndian(m_state.KZGCommitments[size_t(_index)])));
-		yulAssert(m_state.KZGHashVersion.size == 1);
-		hashedCommitment[0] = *m_state.KZGHashVersion.data();
-		yulAssert(hashedCommitment.size == 32);
-		return hashedCommitment;
-	}
-	return util::FixedHash<32>{};
+	if (_index >= m_state.kzgCommitments.size())
+		return util::FixedHash<32>{};
+
+	h256 hashedCommitment = h256(picosha2::hash256(toBigEndian(m_state.kzgCommitments[static_cast<size_t>(_index)])));
+	yulAssert(m_state.kzgHashVersion.size == 1);
+	hashedCommitment[0] = *m_state.kzgHashVersion.data();
+	yulAssert(hashedCommitment.size == 32);
+	return hashedCommitment;
 }

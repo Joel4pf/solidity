@@ -37,7 +37,7 @@ using namespace solidity::util;
 using namespace solidity::test;
 using namespace evmc::literals;
 
-const std::array<evmc::bytes32, 2> EVMHost::m_blob_hashes =
+std::array<evmc::bytes32, 2> const EVMHost::blobHashes =
 {
 	0x0100000000000000000000000000000000000000000000000000000000000001_bytes32,
 	0x0100000000000000000000000000000000000000000000000000000000000002_bytes32
@@ -143,8 +143,8 @@ EVMHost::EVMHost(langutil::EVMVersion _evmVersion, evmc::VM& _vm):
 	// The minimum value of basefee
 	tx_context.block_base_fee = evmc::bytes32{7};
 
-	tx_context.blob_hashes = m_blob_hashes.data();
-	tx_context.blob_hashes_count = m_blob_hashes.size();
+	tx_context.blob_hashes = blobHashes.data();
+	tx_context.blob_hashes_count = blobHashes.size();
 
 	// Reserve space for recording calls.
 	if (!recorded_calls.capacity())

@@ -127,13 +127,13 @@ private:
 	static evmc::Result resultWithGas(int64_t gas_limit, int64_t gas_required, bytes const& _data) noexcept;
 	static evmc::Result resultWithFailure() noexcept;
 
-	static const std::array<evmc::bytes32, 2> m_blob_hashes;
-
 	evmc::VM& m_vm;
 	/// EVM version requested by the testing tool
 	langutil::EVMVersion m_evmVersion;
 	/// EVM version requested from EVMC (matches the above)
 	evmc_revision m_evmRevision;
+
+	static std::array<evmc::bytes32, 2> const blobHashes;
 };
 
 class EVMHostPrinter

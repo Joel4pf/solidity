@@ -112,9 +112,9 @@ struct InterpreterState
 	size_t numInstance = 0;
 
 	// KZG version hash
-	const util::FixedHash<1> KZGHashVersion = util::FixedHash<1>(1);
+	util::FixedHash<1> const kzgHashVersion = util::FixedHash<1>(1);
 	// KZG commitments
-	const std::array<u256, 2> KZGCommitments = {0x01, 0x02};
+	std::array<u256, 2> const kzgCommitments = {0x01, 0x02};
 
 	/// Prints execution trace and non-zero storage to @param _out.
 	/// Flag @param _disableMemoryTrace, if set, does not produce a memory dump. This

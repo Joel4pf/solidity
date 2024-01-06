@@ -1,7 +1,7 @@
 {
     sstore(0, blobhash(0))
     sstore(1, blobhash(1))
-    sstore(2, blobhash(2)) // should still 0
+    sstore(2, blobhash(2)) // should store 0
 }
 // ====
 // EVMVersion: >=cancun

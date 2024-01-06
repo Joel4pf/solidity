@@ -111,7 +111,7 @@ struct InterpreterState
 	/// Number of the current state instance, used for recursion protection
 	size_t numInstance = 0;
 
-	// KZG version hash
+	// KZG hash version
 	util::FixedHash<1> const kzgHashVersion = util::FixedHash<1>(1);
 	// KZG commitments
 	std::array<u256, 2> const kzgCommitments = {0x01, 0x02};

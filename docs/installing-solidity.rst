@@ -1,4 +1,4 @@
-.. index:: ! installing
+.. index:: ! instalinstallingling
 
 .. _installing-solidity:
 
